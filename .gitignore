@@ -1,0 +1,4 @@
+/backend/
+/contracts/
+.env
+/node_modules/
