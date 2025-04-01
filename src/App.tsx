@@ -1,128 +1,67 @@
 "use client"
 
-import React from "react"
-import { Routes, Route, Navigate } from "react-router-dom"
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import { useAuth } from "@/hooks/useAuth"
 import { ThemeProvider } from "@/components/theme-provider"
-import { AppProvider } from "@/context/app-context"
+import { Toaster } from "@/components/ui/toaster"
 
 // Layouts
 import MainLayout from "@/layouts/MainLayout"
 import AuthLayout from "@/layouts/AuthLayout"
-import LoadingSpinner from "@/components/ui/LoadingSpinner"
 
-// Pages
+// Auth Pages
 import LoginPage from "@/pages/auth/login"
 import RegisterPage from "@/pages/auth/register"
-import DashboardPage from "@/pages/dashboard"
-import WalletPage from "@/pages/wallet/WalletPage"
-import BountyDiscoveryPage from "@/pages/bounties/BountyDiscoveryPage"
-import BountyDetailPage from "@/pages/bounties/BountyDetailPage"
-import CreateBountyPage from "@/pages/bounties/CreateBountyPage"
-import TokenMarketplacePage from "@/pages/marketplace/TokenMarketplacePage"
+import ForgotPasswordPage from "@/pages/auth/forgot-password"
+import ResetPasswordPage from "@/pages/auth/reset-password"
+
+// Main Pages
+import LandingPage from "@/pages/landing-page"
+import Dashboard from "@/pages/dashboard"
+import UserDashboard from "@/pages/dashboard/user"
+import MarketplacePage from "@/pages/marketplace/TokenMarketplacePage"
 import ProfilePage from "@/pages/profile/ProfilePage"
-import SettingsPage from "@/pages/settings/SettingsPage"
 import NotFoundPage from "@/pages/NotFoundPage"
 
-// Protected route component
-const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const { isAuthenticated, isLoading } = useAuth()
+// Loading Component
+import LoadingSpinner from "@/components/ui/LoadingSpinner"
+
+function App() {
+  const { user, isLoading } = useAuth()
 
   if (isLoading) {
     return <LoadingSpinner />
   }
 
-  if (!isAuthenticated) {
-    return <Navigate to="/login" replace />
-  }
-
-  return <>{children}</>
-}
-
-const App: React.FC = () => {
   return (
-    <AppProvider>
-      <ThemeProvider>
-        <React.Suspense fallback={<LoadingSpinner />}>
-          <Routes>
-            {/* Auth routes */}
-            <Route element={<AuthLayout />}>
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/register" element={<RegisterPage />} />
-            </Route>
+    <ThemeProvider defaultTheme="light" storageKey="haki-theme">
+      <BrowserRouter>
+        <Routes>
+          {/* Public Routes */}
+          <Route element={<MainLayout />}>
+            <Route path="/" element={<LandingPage />} />
+          </Route>
 
-            {/* Protected routes */}
-            <Route element={<MainLayout />}>
-              <Route
-                path="/"
-                element={
-                  <ProtectedRoute>
-                    <DashboardPage />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/wallet"
-                element={
-                  <ProtectedRoute>
-                    <WalletPage />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/bounties"
-                element={
-                  <ProtectedRoute>
-                    <BountyDiscoveryPage />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/bounties/:id"
-                element={
-                  <ProtectedRoute>
-                    <BountyDetailPage />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/bounties/create"
-                element={
-                  <ProtectedRoute>
-                    <CreateBountyPage />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/marketplace"
-                element={
-                  <ProtectedRoute>
-                    <TokenMarketplacePage />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/profile"
-                element={
-                  <ProtectedRoute>
-                    <ProfilePage />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/settings"
-                element={
-                  <ProtectedRoute>
-                    <SettingsPage />
-                  </ProtectedRoute>
-                }
-              />
-              <Route path="*" element={<NotFoundPage />} />
-            </Route>
-          </Routes>
-        </React.Suspense>
-      </ThemeProvider>
-    </AppProvider>
+          {/* Auth Routes */}
+          <Route element={<AuthLayout />}>
+            <Route path="/auth/login" element={<LoginPage />} />
+            <Route path="/auth/register" element={<RegisterPage />} />
+            <Route path="/auth/forgot-password" element={<ForgotPasswordPage />} />
+            <Route path="/auth/reset-password" element={<ResetPasswordPage />} />
+          </Route>
+
+          {/* Protected Routes */}
+          <Route path="/dashboard" element={user ? <Dashboard /> : <Navigate to="/auth/login" replace />} />
+          <Route path="/dashboard/user" element={user ? <UserDashboard /> : <Navigate to="/auth/login" replace />} />
+          <Route path="/marketplace" element={user ? <MarketplacePage /> : <Navigate to="/auth/login" replace />} />
+          <Route path="/profile" element={user ? <ProfilePage /> : <Navigate to="/auth/login" replace />} />
+
+          {/* 404 Page */}
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+        <Toaster />
+      </BrowserRouter>
+    </ThemeProvider>
   )
 }
 

@@ -21,6 +21,7 @@ export default function Navbar() {
   const { user, logout } = useAuth()
   const navigate = useNavigate()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [notifications] = useState([])
 
   const handleLogout = () => {
     logout()
@@ -61,10 +62,10 @@ export default function Navbar() {
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" className="relative h-8 w-8 rounded-full">
                     <Avatar className="h-8 w-8">
-                      <AvatarImage src={user.profile_image} alt={user.username} />
+                      <AvatarImage src={user.profileImage} alt={user.name} />
                       <AvatarFallback>
-                        {user.first_name?.charAt(0)}
-                        {user.last_name?.charAt(0)}
+                        {user.firstName?.charAt(0)}
+                        {user.lastName?.charAt(0)}
                       </AvatarFallback>
                     </Avatar>
                   </Button>
@@ -73,7 +74,7 @@ export default function Navbar() {
                   <DropdownMenuLabel className="font-normal">
                     <div className="flex flex-col space-y-1">
                       <p className="text-sm font-medium leading-none">
-                        {user.first_name} {user.last_name}
+                        {user.firstName} {user.lastName}
                       </p>
                       <p className="text-xs leading-none text-muted-foreground">{user.email}</p>
                     </div>
@@ -146,15 +147,15 @@ export default function Navbar() {
                   <>
                     <div className="flex items-center p-2">
                       <Avatar className="h-10 w-10 mr-3">
-                        <AvatarImage src={user.profile_image} alt={user.username} />
+                        <AvatarImage src={user.profileImage} alt={user.name} />
                         <AvatarFallback>
-                          {user.first_name?.charAt(0)}
-                          {user.last_name?.charAt(0)}
+                          {user.firstName?.charAt(0)}
+                          {user.lastName?.charAt(0)}
                         </AvatarFallback>
                       </Avatar>
                       <div>
                         <p className="text-sm font-medium">
-                          {user.first_name} {user.last_name}
+                          {user.firstName} {user.lastName}
                         </p>
                         <p className="text-xs text-muted-foreground">{user.email}</p>
                       </div>
@@ -224,3 +225,4 @@ export default function Navbar() {
     </nav>
   )
 }
+

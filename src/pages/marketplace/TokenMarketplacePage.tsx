@@ -194,7 +194,7 @@ export default function TokenMarketplacePage() {
     <div className="container mx-auto py-8">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
         <div>
-          <h1 className="text-3xl font-bold">Token Marketplace</h1>
+          <h1 className="text-3xl font-bold">Token Marketplace.</h1>
           <p className="text-muted-foreground mt-1">Buy and sell HAKI tokens to support legal bounties</p>
         </div>
       </div>

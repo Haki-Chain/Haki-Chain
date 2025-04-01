@@ -1,229 +1,55 @@
-"use client"
-
-import * as React from "react"
+import type * as React from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
-import { Button } from "./button"
+import { DayPicker } from "react-day-picker"
+
 import { cn } from "@/lib/utils"
+import { buttonVariants } from "@/components/ui/button"
 
-// Simple calendar implementation without dependencies
-export type CalendarProps = {
-  mode?: "single" | "range" | "multiple"
-  selected?: Date | Date[] | { from: Date; to: Date }
-  onSelect?: (date: Date | Date[] | { from: Date; to: Date } | undefined) => void
-  month?: Date
-  onMonthChange?: (date: Date) => void
-  className?: string
-  classNames?: Record<string, string>
-  showOutsideDays?: boolean
-  disabled?: boolean | ((date: Date) => boolean)
-  initialFocus?: boolean
-}
+export type CalendarProps = React.ComponentProps<typeof DayPicker>
 
-function Calendar({
-  mode = "single",
-  selected,
-  onSelect,
-  month: initialMonth = new Date(),
-  onMonthChange,
-  className,
-  classNames,
-  showOutsideDays = true,
-  disabled,
-  initialFocus,
-}: CalendarProps) {
-  const [currentMonth, setCurrentMonth] = React.useState(initialMonth)
-
-  // Helper functions
-  const getDaysInMonth = (year: number, month: number) => {
-    return new Date(year, month + 1, 0).getDate()
-  }
-
-  const getFirstDayOfMonth = (year: number, month: number) => {
-    return new Date(year, month, 1).getDay()
-  }
-
-  const isDateSelected = (date: Date) => {
-    if (!selected) return false
-
-    if (mode === "single" && selected instanceof Date) {
-      return date.toDateString() === selected.toDateString()
-    }
-
-    if (mode === "range" && typeof selected === "object" && "from" in selected && "to" in selected) {
-      const { from, to } = selected
-      return date >= from && date <= to
-    }
-
-    if (mode === "multiple" && Array.isArray(selected)) {
-      return selected.some((d) => d.toDateString() === date.toDateString())
-    }
-
-    return false
-  }
-
-  const isDateDisabled = (date: Date) => {
-    if (typeof disabled === "boolean") return disabled
-    if (typeof disabled === "function") return disabled(date)
-    return false
-  }
-
-  const handleDateClick = (date: Date) => {
-    if (isDateDisabled(date)) return
-
-    if (mode === "single") {
-      onSelect?.(date)
-    } else if (mode === "range" && typeof selected === "object" && "from" in selected && "to" in selected) {
-      // Implement range selection logic
-      const { from } = selected
-      if (!from) {
-        onSelect?.({ from: date, to: date })
-      } else {
-        onSelect?.({ from, to: date })
-      }
-    } else if (mode === "multiple" && Array.isArray(selected)) {
-      // Implement multiple selection logic
-      const isAlreadySelected = selected.some((d) => d.toDateString() === date.toDateString())
-      if (isAlreadySelected) {
-        onSelect?.(selected.filter((d) => d.toDateString() !== date.toDateString()))
-      } else {
-        onSelect?.([...selected, date])
-      }
-    }
-  }
-
-  const handlePreviousMonth = () => {
-    const prevMonth = new Date(currentMonth)
-    prevMonth.setMonth(prevMonth.getMonth() - 1)
-    setCurrentMonth(prevMonth)
-    onMonthChange?.(prevMonth)
-  }
-
-  const handleNextMonth = () => {
-    const nextMonth = new Date(currentMonth)
-    nextMonth.setMonth(nextMonth.getMonth() + 1)
-    setCurrentMonth(nextMonth)
-    onMonthChange?.(nextMonth)
-  }
-
-  // Generate calendar days
-  const year = currentMonth.getFullYear()
-  const month = currentMonth.getMonth()
-  const daysInMonth = getDaysInMonth(year, month)
-  const firstDayOfMonth = getFirstDayOfMonth(year, month)
-
-  const days = []
-
-  // Previous month days
-  if (showOutsideDays) {
-    const prevMonthDays = getDaysInMonth(year, month - 1)
-    for (let i = firstDayOfMonth - 1; i >= 0; i--) {
-      const date = new Date(year, month - 1, prevMonthDays - i)
-      days.push({ date, isCurrentMonth: false })
-    }
-  } else {
-    for (let i = 0; i < firstDayOfMonth; i++) {
-      days.push({ date: null, isCurrentMonth: false })
-    }
-  }
-
-  // Current month days
-  for (let i = 1; i <= daysInMonth; i++) {
-    const date = new Date(year, month, i)
-    days.push({ date, isCurrentMonth: true })
-  }
-
-  // Next month days to fill the calendar
-  const remainingDays = 42 - days.length // 6 rows x 7 days
-  if (showOutsideDays && remainingDays > 0) {
-    for (let i = 1; i <= remainingDays; i++) {
-      const date = new Date(year, month + 1, i)
-      days.push({ date, isCurrentMonth: false })
-    }
-  }
-
-  // Group days into weeks
-  const weeks = []
-  for (let i = 0; i < days.length; i += 7) {
-    weeks.push(days.slice(i, i + 7))
-  }
-
-  const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ]
-
-  const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-
+function Calendar({ className, classNames, showOutsideDays = true, ...props }: CalendarProps) {
   return (
-    <div className={cn("p-3", className)}>
-      <div className="flex justify-between items-center mb-4">
-        <Button variant="outline" size="icon" className="h-7 w-7 bg-transparent p-0" onClick={handlePreviousMonth}>
-          <ChevronLeft className="h-4 w-4" />
-        </Button>
-        <div className="font-medium">
-          {monthNames[month]} {year}
-        </div>
-        <Button variant="outline" size="icon" className="h-7 w-7 bg-transparent p-0" onClick={handleNextMonth}>
-          <ChevronRight className="h-4 w-4" />
-        </Button>
-      </div>
-
-      <div className="grid grid-cols-7 gap-1 mb-2">
-        {dayNames.map((day) => (
-          <div key={day} className="text-center text-sm text-muted-foreground">
-            {day}
-          </div>
-        ))}
-      </div>
-
-      <div className="space-y-1">
-        {weeks.map((week, weekIndex) => (
-          <div key={weekIndex} className="grid grid-cols-7 gap-1">
-            {week.map((day, dayIndex) => {
-              if (!day.date) {
-                return <div key={dayIndex} className="h-9 w-9" />
-              }
-
-              const isSelected = isDateSelected(day.date)
-              const isDisabled = isDateDisabled(day.date)
-              const isToday = day.date.toDateString() === new Date().toDateString()
-
-              return (
-                <Button
-                  key={dayIndex}
-                  variant="ghost"
-                  size="icon"
-                  className={cn(
-                    "h-9 w-9 p-0 font-normal",
-                    !day.isCurrentMonth && "text-muted-foreground opacity-50",
-                    isSelected && "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground",
-                    isToday && !isSelected && "bg-accent text-accent-foreground",
-                    isDisabled && "opacity-50 cursor-not-allowed",
-                  )}
-                  disabled={isDisabled}
-                  onClick={() => handleDateClick(day.date)}
-                >
-                  {day.date.getDate()}
-                </Button>
-              )
-            })}
-          </div>
-        ))}
-      </div>
-    </div>
+    <DayPicker
+      showOutsideDays={showOutsideDays}
+      className={cn("p-3", className)}
+      classNames={{
+        months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
+        month: "space-y-4",
+        caption: "flex justify-center pt-1 relative items-center",
+        caption_label: "text-sm font-medium",
+        nav: "space-x-1 flex items-center",
+        nav_button: cn(
+          buttonVariants({ variant: "outline" }),
+          "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100",
+        ),
+        nav_button_previous: "absolute left-1",
+        nav_button_next: "absolute right-1",
+        table: "w-full border-collapse space-y-1",
+        head_row: "flex",
+        head_cell: "text-muted-foreground rounded-md w-9 font-normal text-[0.8rem]",
+        row: "flex w-full mt-2",
+        cell: "h-9 w-9 text-center text-sm p-0 relative [&:has([aria-selected].day-range-end)]:rounded-r-md [&:has([aria-selected].day-outside)]:bg-accent/50 [&:has([aria-selected])]:bg-accent first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
+        day: cn(buttonVariants({ variant: "ghost" }), "h-9 w-9 p-0 font-normal aria-selected:opacity-100"),
+        day_range_end: "day-range-end",
+        day_selected:
+          "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground",
+        day_today: "bg-accent text-accent-foreground",
+        day_outside:
+          "day-outside text-muted-foreground opacity-50 aria-selected:bg-accent/50 aria-selected:text-muted-foreground aria-selected:opacity-30",
+        day_disabled: "text-muted-foreground opacity-50",
+        day_range_middle: "aria-selected:bg-accent aria-selected:text-accent-foreground",
+        day_hidden: "invisible",
+        ...classNames,
+      }}
+      components={{
+        IconLeft: ({ ...props }) => <ChevronLeft className="h-4 w-4" />,
+        IconRight: ({ ...props }) => <ChevronRight className="h-4 w-4" />,
+      }}
+      {...props}
+    />
   )
 }
-
 Calendar.displayName = "Calendar"
 
 export { Calendar }
+

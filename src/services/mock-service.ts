@@ -1,4 +1,10 @@
-import { mockBounties, mockTokens, mockWalletInfo, mockTransactions, mockUser } from "../utils/mock-data"
+import {
+  mockUsers,
+  mockBounties,
+  mockTokenTransactions,
+  mockTokenBalances,
+  mockMarketplaceListings,
+} from "@/utils/mock-data";
 
 // Mock service for testing without backend
 export const MockService = {
@@ -11,7 +17,7 @@ export const MockService = {
       localStorage.setItem("token", "mock-jwt-token")
       return {
         token: "mock-jwt-token",
-        user: mockUser,
+        user: mockUsers,
       }
     }
 
@@ -26,7 +32,7 @@ export const MockService = {
     return {
       token: "mock-jwt-token",
       user: {
-        ...mockUser,
+        ...mockUsers,
         email: data.email,
         firstName: data.firstName,
         lastName: data.lastName,
@@ -41,7 +47,7 @@ export const MockService = {
     const token = localStorage.getItem("token")
     if (!token) return null
 
-    return mockUser
+    return mockUsers
   },
 
   // Bounties

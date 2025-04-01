@@ -3,10 +3,10 @@
 import type React from "react"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { Button } from "@/components/ui/Button"
-import { Input } from "@/components/ui/Input"
-import { Label } from "@/components/ui/Label"
-import { Alert, AlertDescription } from "@/components/ui/Alert"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Alert, AlertDescription } from "@/components/ui/alert"
 
 const LoginPage: React.FC = () => {
   const navigate = useNavigate()
@@ -37,7 +37,7 @@ const LoginPage: React.FC = () => {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-6">Log in to Haki Platform</h1>
+      <h1 className="text-2xl font-bold mb-6">Log in to HakiChain Platform</h1>
 
       {error && (
         <Alert variant="destructive" className="mb-4">
