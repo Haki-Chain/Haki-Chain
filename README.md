@@ -26,9 +26,10 @@ This GitHub repository contains the core codebase for Haki Chain, including smar
 5. [Django Backend](#django-backend)  
 6. [Next.js Frontend](#nextjs-frontend)  
 7. [AI-Powered Assistance](#ai-powered-assistance)  
-8. [Contributing](#contributing)  
-9. [License](#license)  
-10. [Contact & Support](#contact--support)  
+8. [Team Members](#team-members)  
+9. [Contributing](#contributing)  
+10. [License](#license)  
+11. [Contact & Support](#contact--support)  
 
 ---
 
@@ -204,6 +205,27 @@ To run the AI assistant locally:
 cd ai-assistant
 npm start
 ```
+
+---
+
+## 👥 Team Members
+
+Here are the key contributors to the Haki Chain project:
+
+1. **@olusiekwin**  
+   - Role: Frontend Developer  
+   - GitHub: [@olusiekwin](https://github.com/olusiekwin)  
+   - Invited by: Kelvin-Wepo  
+   - Joined: April 1, 2025  
+
+2. **@MercyMurigi**  
+   - Role: Project Manager  
+   - Full Name: Mercy Wairimu  
+   - GitHub: [@MercyMurigi](https://github.com/MercyMurigi)  
+
+3. **Kelvin-Wepo**  
+   - Role: Web3 Developer  
+   - Contribution: Smart contract development and Hedera integration  
 
 ---
 
