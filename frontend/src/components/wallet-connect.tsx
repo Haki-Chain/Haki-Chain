@@ -2,8 +2,8 @@
 
 import type React from "react"
 import { createContext, useContext, useState, useEffect } from "react"
-import { connectWallet, getAccountInfo } from "../utils/hedera-utils"
-import { authService } from "../services/api-service"
+import { connectWallet, getAccountInfo } from "@/utils/hedera-utils"
+import { authService } from "@/services/api-service"
 
 interface WalletContextType {
   isConnected: boolean

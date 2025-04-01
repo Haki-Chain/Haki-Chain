@@ -2,8 +2,8 @@
 
 import type React from "react"
 import { useState } from "react"
-import { useApp } from "../../context/app-context"
-import { config } from "../../utils/config"
+import { useApp } from "@/context/app-context"
+import { config } from "@/utils/config"
 
 const WalletConnector: React.FC = () => {
   const { wallet } = useApp()

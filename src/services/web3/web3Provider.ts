@@ -1,4 +1,4 @@
-import { config } from "../../config/appConfig"
+import { config } from "@/config/appConfig"
 
 class Web3Provider {
   private isConnected = false

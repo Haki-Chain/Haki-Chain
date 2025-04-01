@@ -6,7 +6,7 @@ import { FeatureFlag } from "./feature-flag"
 import { Button } from "./ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card"
 import { Textarea } from "./ui/textarea"
-import { aiAssistantService } from "../services/ai-assistant-service"
+import { aiAssistantService } from "@/services/ai-assistant-service"
 
 interface AiAssistantProps {
   initialPrompt?: string

@@ -1,8 +1,8 @@
 "use client"
 
 import { useState, useCallback } from "react"
-import { useApp } from "../context/app-context"
-import hybridService from "../services/hybrid-service"
+import { useApp } from "@/context/app-context"
+import hybridService from "@/services/hybrid-service"
 
 export const useHybrid = () => {
   const { token } = useApp()

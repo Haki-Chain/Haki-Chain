@@ -1,9 +1,10 @@
 "use client"
 
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
+import { Routes, Route, Navigate } from "react-router-dom"
 import { useAuth } from "@/hooks/useAuth"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/toaster"
+import { AppProvider } from "@/context/app-context"
 
 // Layouts
 import MainLayout from "@/layouts/MainLayout"
@@ -35,7 +36,7 @@ function App() {
 
   return (
     <ThemeProvider defaultTheme="light" storageKey="haki-theme">
-      <BrowserRouter>
+      <AppProvider>
         <Routes>
           {/* Public Routes */}
           <Route element={<MainLayout />}>
@@ -60,7 +61,7 @@ function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <Toaster />
-      </BrowserRouter>
+      </AppProvider>
     </ThemeProvider>
   )
 }

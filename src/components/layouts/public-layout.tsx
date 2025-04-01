@@ -2,8 +2,8 @@
 
 import { Outlet } from "react-router-dom"
 import { motion } from "framer-motion"
-import PublicNavbar from "../navigation/public-navbar"
-import PublicFooter from "../navigation/public-footer"
+import PublicNavbar from "@/navigation/public-navbar"
+import PublicFooter from "@/navigation/public-footer"
 
 export default function PublicLayout() {
   return (

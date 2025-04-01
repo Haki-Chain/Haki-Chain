@@ -2,8 +2,8 @@
 
 import type React from "react"
 import { useState } from "react"
-import { Button } from "../ui/Button"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "../ui/Card"
+import { Button } from "@/components/ui/Button"
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/Card"
 import { MessageCircle, X } from "lucide-react"
 
 const AiAssistantWidget: React.FC = () => {

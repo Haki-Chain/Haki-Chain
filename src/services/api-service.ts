@@ -1,4 +1,4 @@
-import { config } from "../utils/config"
+import { config } from "@/utils/config"
 
 // Define types for API responses
 interface ApiResponse<T> {

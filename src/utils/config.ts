@@ -14,13 +14,6 @@ export const config = {
       process.env.REACT_APP_FEATURE_AI_ASSISTANT === "true" || process.env.FEATURE_AI_ASSISTANT === "true" || false,
   },
 
-  // Contract addresses
-  contracts: {
-    token: process.env.REACT_APP_TOKEN_CONTRACT_ADDRESS || "",
-    bounty: process.env.REACT_APP_BOUNTY_CONTRACT_ADDRESS || "",
-    marketplace: process.env.REACT_APP_MARKETPLACE_CONTRACT_ADDRESS || "",
-  },
-
   // Blockchain configuration
   blockchain: {
     networkId: process.env.REACT_APP_HEDERA_NETWORK || process.env.HEDERA_NETWORK || "testnet",

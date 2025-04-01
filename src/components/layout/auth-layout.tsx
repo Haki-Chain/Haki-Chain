@@ -1,6 +1,6 @@
 import type React from "react"
 import { Outlet } from "react-router-dom"
-import { config } from "../../utils/config"
+import { config } from "@/utils/config"
 
 const AuthLayout: React.FC = () => {
   return (

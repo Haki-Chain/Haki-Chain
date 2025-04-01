@@ -4,8 +4,8 @@ import React from "react"
 import { FeatureFlag } from "./feature-flag"
 import { Button } from "./ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card"
-import { blockchainService } from "../services/blockchain-service"
-import { useWallet } from "../contexts/wallet-context"
+import { blockchainService } from "@/services/blockchain-service"
+import { useWallet } from "@/contexts/wallet-context"
 
 interface BlockchainTransactionProps {
   bountyId: string

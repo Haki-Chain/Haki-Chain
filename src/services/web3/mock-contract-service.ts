@@ -1,4 +1,4 @@
-import { mockBounties, mockTokens, mockWalletInfo } from "../../utils/mock-data"
+import { mockBounties, mockTokens, mockWalletInfo } from "@/utils/mock-data"
 
 // Mock contract service for testing without actual blockchain
 export const MockContractService = {

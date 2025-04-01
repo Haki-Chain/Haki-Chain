@@ -1,6 +1,6 @@
 import type React from "react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/Card"
-import { Button } from "../components/ui/Button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/Card"
+import { Button } from "@/components/ui/Button"
 
 const DashboardPage: React.FC = () => {
   return (

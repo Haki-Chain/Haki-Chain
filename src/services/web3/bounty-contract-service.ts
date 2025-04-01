@@ -1,5 +1,5 @@
-import web3Provider from "../../utils/web3-provider"
-import { bountyContractABI, contractAddresses } from "../../contracts/contract-config"
+import web3Provider from "@/utils/web3-provider"
+import { bountyContractABI, contractAddresses } from "@/contracts/contract-config"
 import { ethers } from "ethers"
 
 class BountyContractService {

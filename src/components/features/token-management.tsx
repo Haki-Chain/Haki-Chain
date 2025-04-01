@@ -2,15 +2,15 @@
 
 import type React from "react"
 import { useState, useEffect } from "react"
-import { useApp } from "../../context/app-context"
-import { config } from "../../utils/config"
-import tokenContractService from "../../services/web3/token-contract-service"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card"
-import { Button } from "../ui/button"
-import { Input } from "../ui/input"
-import { Label } from "../ui/label"
+import { useApp } from "@/context/app-context"
+import { config } from "@/utils/config"
+import tokenContractService from "@/services/web3/token-contract-service"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 import { AlertCircle, CheckCircle, Loader2 } from "lucide-react"
-import { Alert, AlertDescription, AlertTitle } from "../ui/alert"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 
 const TokenManagement: React.FC = () => {
   const { wallet, isAuthenticated } = useApp()

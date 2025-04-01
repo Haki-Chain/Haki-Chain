@@ -7,7 +7,7 @@ import {
   TokenId,
   Hbar,
 } from "@hashgraph/sdk"
-import config from "../config"
+import config from "@/config"
 
 // Initialize Hedera client based on network
 const getClient = () => {

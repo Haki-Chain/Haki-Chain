@@ -1,5 +1,5 @@
 import { api } from "./api-service"
-import config from "../config"
+import config from "@/config"
 
 // AI Assistant service for handling all AI-related operations
 export const aiAssistantService = {

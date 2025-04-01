@@ -2,10 +2,10 @@
 
 import { useState, useEffect } from "react"
 import { useFeatures } from "./useFeatures"
-import apiService from "../services/api/apiService"
-import tokenContractService from "../services/web3/tokenContractService"
-import bountyContractService from "../services/web3/bountyContractService"
-import marketplaceContractService from "../services/web3/marketplaceContractService"
+import apiService from "@/services/api/apiService"
+import tokenContractService from "@/services/web3/tokenContractService"
+import bountyContractService from "@/services/web3/bountyContractService"
+import marketplaceContractService from "@/services/web3/marketplaceContractService"
 
 export function useHybrid() {
   const { isBlockchainEnabled: isBlockchainFeatureEnabledFromFeatures } = useFeatures()

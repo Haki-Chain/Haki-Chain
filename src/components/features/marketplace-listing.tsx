@@ -2,16 +2,16 @@
 
 import type React from "react"
 import { useState } from "react"
-import { useApp } from "../../context/app-context"
-import { config } from "../../utils/config"
-import marketplaceContractService from "../../services/web3/marketplace-contract-service"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card"
-import { Button } from "../ui/button"
-import { Input } from "../ui/input"
-import { Label } from "../ui/label"
-import { Textarea } from "../ui/textarea"
+import { useApp } from "@/context/app-context"
+import { config } from "@/utils/config"
+import marketplaceContractService from "@/services/web3/marketplace-contract-service"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
 import { AlertCircle, CheckCircle, Loader2, Upload } from "lucide-react"
-import { Alert, AlertDescription, AlertTitle } from "../ui/alert"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 
 const MarketplaceListing: React.FC = () => {
   const { wallet } = useApp()

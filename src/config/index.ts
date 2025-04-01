@@ -1,7 +1,7 @@
 // Environment variables and configuration
 const config = {
   // API URL from environment variable with fallback
-  apiUrl: process.env.REACT_APP_API_URL || "http://localhost:5000",
+  apiUrl: process.env.REACT_APP_API_URL || "http://localhost:8000",
 
   // Hedera network from environment variable with fallback to testnet
   hederaNetwork: process.env.HEDERA_NETWORK || "testnet",

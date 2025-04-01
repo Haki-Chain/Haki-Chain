@@ -3,10 +3,10 @@
 import type React from "react"
 import { useState } from "react"
 import { Link, useLocation } from "react-router-dom"
-import { useFeatures } from "../../hooks/use-features"
-import { cn } from "../../lib/utils"
+import { useFeatures } from "@/hooks/use-features"
+import { cn } from "@/lib/utils"
 import { Home, Briefcase, Wallet, ShoppingBag, Users, ChevronLeft, ChevronRight } from "lucide-react"
-import { Button } from "../ui/button"
+import { Button } from "@/components/ui/button"
 
 const Sidebar: React.FC = () => {
   const location = useLocation()

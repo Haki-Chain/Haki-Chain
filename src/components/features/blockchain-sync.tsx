@@ -2,10 +2,10 @@
 
 import type React from "react"
 import { useState } from "react"
-import { useHybrid } from "../../hooks/use-hybrid"
-import { Button } from "../ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card"
-import { Alert, AlertDescription, AlertTitle } from "../ui/alert"
+import { useHybrid } from "@/hooks/use-hybrid"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { AlertCircle, CheckCircle, RefreshCw } from "lucide-react"
 
 export const BlockchainSync: React.FC = () => {

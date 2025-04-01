@@ -1,4 +1,4 @@
-import config from "../config"
+import config from "@/config"
 
 export function EnvironmentIndicator() {
   const isProduction = process.env.NODE_ENV === "production"

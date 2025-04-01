@@ -2,7 +2,7 @@
 
 import type React from "react"
 import { useState, useRef, useEffect } from "react"
-import { useApp } from "../../context/app-context"
+import { useApp } from "@/context/app-context"
 
 interface Message {
   id: string

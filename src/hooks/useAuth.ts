@@ -1,159 +1,147 @@
 "use client"
 
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect, createContext, useContext } from "react"
+import type { User } from "@/types/user"
 
-// Define user types
-export type UserRole = "ngo" | "donor" | "lawyer" | "admin"
-
-export interface User {
-  id: string
-  name: string
-  email: string
-  role: UserRole
+export interface AuthContextType {
+  user: User | null
+  isAuthenticated: boolean
+  login: (email: string, password: string) => Promise<boolean>
+  register: (userData: Partial<User>) => Promise<boolean>
+  logout: () => void
+  updateProfile?: (userData: Partial<User>) => Promise<boolean>
+  verifyLawyer?: () => Promise<boolean>
+  connectWallet?: () => Promise<boolean>
 }
 
-export function useAuth() {
+const defaultAuthContext: AuthContextType = {
+  user: null,
+  isAuthenticated: false,
+  login: async () => false,
+  register: async () => false,
+  logout: () => {},
+}
+
+const AuthContext = createContext<AuthContextType>(defaultAuthContext)
+
+export const useAuth = () => useContext(AuthContext)
+
+export const useProvideAuth = () => {
   const [user, setUser] = useState<User | null>(null)
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false)
-  const [isLoading, setIsLoading] = useState<boolean>(true)
-  const [error, setError] = useState<string | null>(null)
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
 
-  // Check for existing session on mount
   useEffect(() => {
-    const checkAuth = async () => {
+    // Check for stored auth token on mount
+    const storedUser = localStorage.getItem("user")
+    if (storedUser) {
       try {
-        // Check if user is stored in localStorage
-        const storedUser = localStorage.getItem("user")
-
-        if (storedUser) {
-          const parsedUser = JSON.parse(storedUser)
-          setUser(parsedUser)
-          setIsAuthenticated(true)
-        }
-      } catch (err) {
-        console.error("Auth check error:", err)
-      } finally {
-        setIsLoading(false)
+        const parsedUser = JSON.parse(storedUser)
+        setUser(parsedUser)
+        setIsAuthenticated(true)
+      } catch (error) {
+        console.error("Failed to parse stored user", error)
+        localStorage.removeItem("user")
       }
     }
-
-    checkAuth()
   }, [])
 
-  const login = useCallback(async (email: string, password: string): Promise<boolean> => {
-    setIsLoading(true)
-    setError(null)
-
+  const login = async (email: string, password: string): Promise<boolean> => {
     try {
-      // Mock API call - in a real app, this would be an actual API request
-      await new Promise((resolve) => setTimeout(resolve, 1000))
-
-      // Mock validation
-      if (email === "admin@example.com" && password === "password") {
-        const mockUser: User = {
-          id: "1",
-          name: "Admin User",
-          email: "admin@example.com",
-          role: "admin",
-        }
-
-        setUser(mockUser)
-        setIsAuthenticated(true)
-        localStorage.setItem("user", JSON.stringify(mockUser))
-        return true
-      } else if (email === "ngo@example.com" && password === "password") {
-        const mockUser: User = {
-          id: "2",
-          name: "NGO User",
-          email: "ngo@example.com",
-          role: "ngo",
-        }
-
-        setUser(mockUser)
-        setIsAuthenticated(true)
-        localStorage.setItem("user", JSON.stringify(mockUser))
-        return true
-      } else if (email === "lawyer@example.com" && password === "password") {
-        const mockUser: User = {
-          id: "3",
-          name: "Lawyer User",
-          email: "lawyer@example.com",
-          role: "lawyer",
-        }
-
-        setUser(mockUser)
-        setIsAuthenticated(true)
-        localStorage.setItem("user", JSON.stringify(mockUser))
-        return true
-      } else if (email === "donor@example.com" && password === "password") {
-        const mockUser: User = {
-          id: "4",
-          name: "Donor User",
-          email: "donor@example.com",
-          role: "donor",
-        }
-
-        setUser(mockUser)
-        setIsAuthenticated(true)
-        localStorage.setItem("user", JSON.stringify(mockUser))
-        return true
-      } else {
-        setError("Invalid email or password")
-        return false
+      // Mock login for now
+      const mockUser: User = {
+        id: "1",
+        email,
+        username: email.split("@")[0],
+        first_name: "Test",
+        last_name: "User",
+        profile_image: "/placeholder.svg?height=200&width=200",
       }
-    } catch (err: any) {
-      setError(err.message || "Login failed")
+
+      setUser(mockUser)
+      setIsAuthenticated(true)
+      localStorage.setItem("user", JSON.stringify(mockUser))
+      return true
+    } catch (error) {
+      console.error("Login failed", error)
       return false
-    } finally {
-      setIsLoading(false)
     }
-  }, [])
+  }
 
-  const register = useCallback(
-    async (name: string, email: string, password: string, role: UserRole = "ngo"): Promise<boolean> => {
-      setIsLoading(true)
-      setError(null)
-
-      try {
-        // Mock API call - in a real app, this would be an actual API request
-        await new Promise((resolve) => setTimeout(resolve, 1000))
-
-        // Mock registration
-        const mockUser: User = {
-          id: Math.random().toString(36).substring(2, 9),
-          name,
-          email,
-          role,
-        }
-
-        setUser(mockUser)
-        setIsAuthenticated(true)
-        localStorage.setItem("user", JSON.stringify(mockUser))
-        return true
-      } catch (err: any) {
-        setError(err.message || "Registration failed")
-        return false
-      } finally {
-        setIsLoading(false)
+  const register = async (userData: Partial<User>): Promise<boolean> => {
+    try {
+      // Mock registration
+      const mockUser: User = {
+        id: "1",
+        email: userData.email || "test@example.com",
+        username: userData.username || "testuser",
+        first_name: userData.first_name || "Test",
+        last_name: userData.last_name || "User",
+        profile_image: "/placeholder.svg?height=200&width=200",
       }
-    },
-    [],
-  )
 
-  const logout = useCallback(() => {
-    localStorage.removeItem("user")
+      setUser(mockUser)
+      setIsAuthenticated(true)
+      localStorage.setItem("user", JSON.stringify(mockUser))
+      return true
+    } catch (error) {
+      console.error("Registration failed", error)
+      return false
+    }
+  }
+
+  const logout = () => {
     setUser(null)
     setIsAuthenticated(false)
-  }, [])
+    localStorage.removeItem("user")
+  }
+
+  const updateProfile = async (userData: Partial<User>): Promise<boolean> => {
+    try {
+      if (!user) return false
+
+      const updatedUser = { ...user, ...userData }
+      setUser(updatedUser)
+      localStorage.setItem("user", JSON.stringify(updatedUser))
+      return true
+    } catch (error) {
+      console.error("Profile update failed", error)
+      return false
+    }
+  }
+
+  const verifyLawyer = async (): Promise<boolean> => {
+    try {
+      if (!user) return false
+
+      const updatedUser = {
+        ...user,
+        is_verified: true,
+        verificationStatus: "verified",
+      }
+
+      setUser(updatedUser)
+      localStorage.setItem("user", JSON.stringify(updatedUser))
+      return true
+    } catch (error) {
+      console.error("Lawyer verification failed", error)
+      return false
+    }
+  }
+
+  const connectWallet = async (): Promise<boolean> => {
+    // Mock wallet connection
+    return true
+  }
 
   return {
     user,
     isAuthenticated,
-    isLoading,
-    error,
     login,
     register,
     logout,
+    updateProfile,
+    verifyLawyer,
+    connectWallet,
   }
 }
 

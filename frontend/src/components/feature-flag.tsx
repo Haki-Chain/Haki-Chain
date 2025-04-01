@@ -1,5 +1,5 @@
 import type React from "react"
-import config from "../config"
+import config from "@/config"
 
 interface FeatureFlagProps {
   feature: "blockchain" | "aiAssistant"

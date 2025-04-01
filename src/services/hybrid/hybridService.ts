@@ -1,9 +1,9 @@
-import apiService from "../api/apiService"
-import tokenContractService from "../web3/tokenContractService"
-import bountyContractService from "../web3/bountyContractService"
-import marketplaceContractService from "../web3/marketplaceContractService"
-import web3Provider from "../web3/web3Provider"
-import { config } from "../../config/appConfig"
+import apiService from "@/api/apiService"
+import tokenContractService from "@/web3/tokenContractService"
+import bountyContractService from "@/web3/bountyContractService"
+import marketplaceContractService from "@/web3/marketplaceContractService"
+import web3Provider from "@/web3/web3Provider"
+import { config } from "@/config/appConfig"
 
 class HybridService {
   // Check if blockchain features are enabled

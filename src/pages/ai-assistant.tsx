@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import { Send, Upload, FileText, Bot, Sparkles } from "lucide-react"
-import { getChatResponse, type ChatMessage } from "../services/ai/chat-service"
+import { getChatResponse, type ChatMessage } from "@/services/ai/chat-service"
 import { v4 as uuidv4 } from "uuid"
 
 export function AIAssistant() {

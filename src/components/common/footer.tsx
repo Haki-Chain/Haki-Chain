@@ -1,5 +1,5 @@
 import type React from "react"
-import { config } from "../../utils/config"
+import { config } from "@/utils/config"
 
 const Footer: React.FC = () => {
   return (

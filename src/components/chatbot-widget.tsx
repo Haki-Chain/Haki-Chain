@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { X, Send, MessageSquare } from "lucide-react"
-import { getChatResponse, type ChatMessage } from "../services/ai/chat-service"
+import { getChatResponse, type ChatMessage } from "@/services/ai/chat-service"
 import { v4 as uuidv4 } from "uuid"
 
 export function ChatbotWidget() {

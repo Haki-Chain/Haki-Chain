@@ -2,7 +2,7 @@
 
 import type React from "react"
 import { useState, useEffect } from "react"
-import { useApp } from "../../context/app-context"
+import { useApp } from "@/context/app-context"
 import WalletConnector from "./wallet-connector"
 
 interface BlockchainDashboardProps {

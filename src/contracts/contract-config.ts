@@ -1,5 +1,5 @@
 // Contract ABIs and addresses
-import { config } from "../utils/config"
+import { config } from "@/utils/config"
 
 // Token contract ABI (simplified for example)
 export const tokenContractABI = [

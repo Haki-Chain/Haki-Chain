@@ -1,14 +1,14 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "../components/ui/card"
-import { Button } from "../components/ui/button"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs"
-import { Avatar, AvatarFallback, AvatarImage } from "../components/ui/avatar"
-import { Progress } from "../components/ui/progress"
-import { Separator } from "../components/ui/separator"
-import { Alert, AlertDescription } from "../components/ui/alert"
-import { useAuth } from "../contexts/auth-context"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Progress } from "@/components/ui/progress"
+import { Separator } from "@/components/ui/separator"
+import { Alert, AlertDescription } from "@/components/ui/alert"
+import { useAuth } from "@/contexts/auth-context"
 import { DollarSign, Calendar, CheckCircle, AlertCircle, Plus, Eye, Download } from "lucide-react"
 
 // Mock data for NGO dashboard

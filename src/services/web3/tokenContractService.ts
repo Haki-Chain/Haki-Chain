@@ -1,4 +1,4 @@
-import { config } from "../../config/appConfig"
+import { config } from "@/config/appConfig"
 
 class TokenContractService {
   private contractAddress: string

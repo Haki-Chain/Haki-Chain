@@ -1,8 +1,8 @@
 import type React from "react"
 import { Outlet } from "react-router-dom"
-import Navbar from "../common/navbar"
-import Sidebar from "../common/sidebar"
-import Footer from "../common/footer"
+import Navbar from "@/common/navbar"
+import Sidebar from "@/common/sidebar"
+import Footer from "@/common/footer"
 
 const MainLayout: React.FC = () => {
   return (

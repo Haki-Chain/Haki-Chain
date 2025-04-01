@@ -1,5 +1,5 @@
 import type React from "react"
-import { useApp } from "../../context/app-context"
+import { useApp } from "@/context/app-context"
 
 const UserStats: React.FC = () => {
   const { user } = useApp()

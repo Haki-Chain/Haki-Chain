@@ -3,10 +3,10 @@
 import type React from "react"
 import { useState } from "react"
 import { Link } from "react-router-dom"
-import { useApp } from "../../context/app-context"
-import { config } from "../../utils/config"
-import { Button } from "../ui/button"
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
+import { useApp } from "@/context/app-context"
+import { config } from "@/utils/config"
+import { Button } from "@/components/ui/button"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,9 +14,9 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "../ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu"
 import { Bell, Moon, Sun, User, LogOut, Settings } from "lucide-react"
-import { useTheme } from "../../components/theme-provider"
+import { useTheme } from "@/components/theme-provider"
 
 const Navbar: React.FC = () => {
   const { user, logout } = useApp()

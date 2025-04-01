@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useCallback } from "react"
-import { initWeb3, getCurrentAccount, isWalletConnected, getNetworkId } from "../utils/web3-provider"
+import { initWeb3, getCurrentAccount, isWalletConnected, getNetworkId } from "@/utils/web3-provider"
 import type Web3 from "web3"
 
 interface Web3State {

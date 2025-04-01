@@ -1,4 +1,4 @@
-import { isBlockchainEnabled } from "../utils/hedera-utils"
+import { isBlockchainEnabled } from "@/utils/hedera-utils"
 import { api } from "./api-service"
 
 // Blockchain service for handling all blockchain operations

@@ -2,16 +2,16 @@
 
 import type React from "react"
 import { useState } from "react"
-import { useHybrid } from "../../hooks/use-hybrid"
-import { useFeatures } from "../../hooks/use-features"
-import { Button } from "../ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card"
-import { Input } from "../ui/input"
-import { Textarea } from "../ui/textarea"
-import { Label } from "../ui/label"
-import { Alert, AlertDescription, AlertTitle } from "../ui/alert"
+import { useHybrid } from "@/hooks/use-hybrid"
+import { useFeatures } from "@/hooks/use-features"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { Label } from "@/components/ui/label"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { AlertCircle, CheckCircle, Plus } from "lucide-react"
-import { Switch } from "../ui/switch"
+import { Switch } from "@/components/ui/switch"
 
 interface BountyFormProps {
   onSuccess?: (bounty: any) => void

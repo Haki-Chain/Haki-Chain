@@ -3,8 +3,8 @@
 import { useState, useEffect } from "react"
 import { Outlet, useLocation } from "react-router-dom"
 import { motion } from "framer-motion"
-import AdminSidebar from "../navigation/admin-sidebar"
-import AdminHeader from "../navigation/admin-header"
+import AdminSidebar from "@/navigation/admin-sidebar"
+import AdminHeader from "@/navigation/admin-header"
 import { useMobile } from "@/hooks/use-mobile"
 
 export default function AdminLayout() {

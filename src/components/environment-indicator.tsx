@@ -1,17 +1,14 @@
-import { Badge } from "@/components/ui/badge"
+import type React from "react"
 
-interface EnvironmentIndicatorProps {
-  className?: string
-}
+export const EnvironmentIndicator: React.FC = () => {
+  const env = process.env.NODE_ENV || "development"
 
-export function EnvironmentIndicator({ className }: EnvironmentIndicatorProps) {
-  // Determine environment
-  const environment = process.env.NODE_ENV === "production" ? "production" : "development"
+  if (env === "production") {
+    return null
+  }
 
-  return (
-    <Badge variant={environment === "production" ? "default" : "outline"} className={className}>
-      {environment}
-    </Badge>
-  )
+  const bgColor = env === "development" ? "bg-blue-500" : "bg-yellow-500"
+
+  return <div className={`fixed top-0 right-0 z-50 px-2 py-1 text-xs text-white ${bgColor}`}>{env.toUpperCase()}</div>
 }
 

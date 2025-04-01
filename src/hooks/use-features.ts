@@ -1,7 +1,7 @@
 "use client"
 
 import { useMemo } from "react"
-import { config } from "../utils/config"
+import { config } from "@/utils/config"
 
 export function useFeatures() {
   const features = useMemo(() => {

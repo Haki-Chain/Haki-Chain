@@ -1,8 +1,8 @@
 "use client"
 
 import { useState, useCallback } from "react"
-import api from "../utils/api"
-import { MockService } from "../services/mock-service"
+import api from "@/utils/api"
+import { MockService } from "@/services/mock-service"
 
 // Flag to determine whether to use mock data or real API
 // You can toggle this until your backend is ready
