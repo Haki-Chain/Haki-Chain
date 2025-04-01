@@ -45,17 +45,17 @@ function App() {
 
           {/* Auth Routes */}
           <Route element={<AuthLayout />}>
-            <Route path="/auth/login" element={<LoginPage />} />
-            <Route path="/auth/register" element={<RegisterPage />} />
-            <Route path="/auth/forgot-password" element={<ForgotPasswordPage />} />
-            <Route path="/auth/reset-password" element={<ResetPasswordPage />} />
+            <Route path="pages/auth/login" element={<LoginPage />} />
+            <Route path="pages/auth/register" element={<RegisterPage />} />
+            <Route path="pages/auth/forgot-password" element={<ForgotPasswordPage />} />
+            <Route path="pages/auth/reset-password" element={<ResetPasswordPage />} />
           </Route>
 
           {/* Protected Routes */}
           <Route path="/dashboard" element={user ? <Dashboard /> : <Navigate to="/auth/login" replace />} />
-          <Route path="/dashboard/user" element={user ? <UserDashboard /> : <Navigate to="/auth/login" replace />} />
-          <Route path="/marketplace" element={user ? <MarketplacePage /> : <Navigate to="/auth/login" replace />} />
-          <Route path="/profile" element={user ? <ProfilePage /> : <Navigate to="/auth/login" replace />} />
+          <Route path="/dashboard/user" element={user ? <UserDashboard /> : <Navigate to="pages/auth/login" replace />} />
+          <Route path="/marketplace" element={user ? <MarketplacePage /> : <Navigate to="pages/auth/login" replace />} />
+          <Route path="/profile" element={user ? <ProfilePage /> : <Navigate to="pages/auth/login" replace />} />
 
           {/* 404 Page */}
           <Route path="*" element={<NotFoundPage />} />
