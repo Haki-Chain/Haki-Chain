@@ -215,12 +215,9 @@ Here are the key contributors to the Haki Chain project:
 1. **@olusiekwin**  
    - Role: Frontend Developer  
    - GitHub: [@olusiekwin](https://github.com/olusiekwin)  
-   - Invited by: Kelvin-Wepo  
-   - Joined: April 1, 2025  
 
 2. **@MercyMurigi**  
    - Role: Project Manager  
-   - Full Name: Mercy Wairimu  
    - GitHub: [@MercyMurigi](https://github.com/MercyMurigi)  
 
 3. **Kelvin-Wepo**  
