@@ -1,0 +1,14 @@
+Django==4.1.7
+djangorestframework==3.14.0
+django-cors-headers==3.13.0
+django-filter==22.1
+djangorestframework-simplejwt==5.2.2
+psycopg2-binary==2.9.5
+python-dotenv==0.21.1
+web3==6.0.0
+ipfshttpclient==0.8.0
+Pillow==9.4.0
+gunicorn==20.1.0
+whitenoise==6.3.0
+dj-database-url==1.2.0
+
