@@ -224,7 +224,7 @@ export default function LandingPage() {
                   Sign In
                 </Button>
               </Link>
-              <Link to="pages/auth/register" className="hidden md:block">
+              <Link to="/register" className="hidden md:block">
                 <Button size="sm">Register</Button>
               </Link>
 
@@ -575,7 +575,7 @@ export default function LandingPage() {
                   </li>
                 </ul>
                 <div className="mt-6">
-                  <Link to="/ngo-registration">
+                  <Link to="/register">
                     <Button className="w-full">
                       Register as an NGO
                       <ArrowRight className="ml-2 h-4 w-4" />

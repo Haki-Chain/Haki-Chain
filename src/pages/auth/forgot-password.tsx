@@ -35,7 +35,7 @@ export default function ForgotPasswordPage() {
       setIsSubmitting(true)
 
       // Call the password reset API
-      await api.post("/auth/forgot-password", { email })
+      await api.post("/forgot-password", { email })
 
       setIsSubmitted(true)
 
@@ -91,14 +91,14 @@ export default function ForgotPasswordPage() {
                 {isSubmitting ? "Sending..." : "Send Reset Link"}
               </Button>
 
-              <Button type="button" variant="outline" className="w-full" onClick={() => navigate("/auth/login")}>
+              <Button type="button" variant="outline" className="w-full" onClick={() => navigate("/login")}>
                 Back to Login
               </Button>
             </CardFooter>
           </form>
         ) : (
           <CardFooter className="flex flex-col space-y-2">
-            <Button type="button" variant="outline" className="w-full" onClick={() => navigate("/auth/login")}>
+            <Button type="button" variant="outline" className="w-full" onClick={() => navigate("/login")}>
               Back to Login
             </Button>
           </CardFooter>

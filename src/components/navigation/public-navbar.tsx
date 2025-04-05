@@ -60,12 +60,12 @@ export default function PublicNavbar() {
 
         {/* Desktop Auth Buttons */}
         <div className="hidden md:flex items-center gap-4">
-          <Link to="/auth/login">
+          <Link to="/login">
             <Button variant="outline" size="sm">
               Log In
             </Button>
           </Link>
-          <Link to="/auth/register">
+          <Link to="/register">
             <Button size="sm">Sign Up</Button>
           </Link>
         </div>

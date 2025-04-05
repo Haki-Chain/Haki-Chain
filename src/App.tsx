@@ -11,13 +11,14 @@ import MainLayout from "@/layouts/MainLayout"
 import AuthLayout from "@/layouts/AuthLayout"
 
 // Auth Pages
-import LoginPage from "@/pages/auth/login"
-import RegisterPage from "@/pages/auth/register"
+import LoginPage from "@/pages/auth/LoginPage"
+import RegisterPage from "@/pages/auth/RegisterPage"
 import ForgotPasswordPage from "@/pages/auth/forgot-password"
 import ResetPasswordPage from "@/pages/auth/reset-password"
 
 // Main Pages
 import LandingPage from "@/pages/landing-page"
+import TokenMarketplace from "@/pages/token-marketplace"
 import Dashboard from "@/pages/dashboard"
 import UserDashboard from "@/pages/dashboard/user"
 import MarketplacePage from "@/pages/marketplace/TokenMarketplacePage"
@@ -45,20 +46,20 @@ function App() {
 
           {/* Auth Routes */}
           <Route element={<AuthLayout />}>
-            <Route path="pages/auth/login" element={<LoginPage />} />
-            <Route path="pages/auth/register" element={<RegisterPage />} />
-            <Route path="pages/auth/forgot-password" element={<ForgotPasswordPage />} />
-            <Route path="pages/auth/reset-password" element={<ResetPasswordPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="forgot-password" element={<ForgotPasswordPage />} />
+            <Route path="/reset-password" element={<ResetPasswordPage />} />
           </Route>
 
           {/* Protected Routes */}
-          <Route path="/dashboard" element={user ? <Dashboard /> : <Navigate to="/auth/login" replace />} />
-          <Route path="/dashboard/user" element={user ? <UserDashboard /> : <Navigate to="pages/auth/login" replace />} />
-          <Route path="/marketplace" element={user ? <MarketplacePage /> : <Navigate to="pages/auth/login" replace />} />
-          <Route path="/profile" element={user ? <ProfilePage /> : <Navigate to="pages/auth/login" replace />} />
+          {/* <Route path="/dashboard" element={user ? <Dashboard /> : <Navigate to="/login" replace />} />
+          <Route path="/dashboard/user" element={user ? <UserDashboard /> : <Navigate to="/login" replace />} />
+          <Route path="/marketplace" element={user ? <MarketplacePage /> : <Navigate to="/login" replace />} />
+          <Route path="/profile" element={user ? <ProfilePage /> : <Navigate to="/login" replace />} />
 
-          {/* 404 Page */}
-          <Route path="*" element={<NotFoundPage />} />
+         {/* 404 Page */}
+         <Route path="*" element={<NotFoundPage />} /> 
         </Routes>
         <Toaster />
       </AppProvider>
